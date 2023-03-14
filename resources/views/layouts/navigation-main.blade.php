@@ -57,6 +57,24 @@
                 </ul>
             </nav>
 
+
+            @if($digests)
+                <section>
+                    <header class="major">
+                        <h2>Последние дайджесты:</h2>
+                    </header>
+                    <div class="mini-posts">
+                        @foreach ($digests as $digest)
+                        <article>
+                            <h4> {{ $digest->title }} </h4>
+                            <p> {!! $digest->description !!} </p>
+                        </article>
+                        @endforeach
+                    </div>
+                </section>
+            @endif
+
+
         <!-- Footer -->
             <footer id="footer">
                 <p class="copyright">2022 - {{ date("Y") }} | BRITVA</p>
