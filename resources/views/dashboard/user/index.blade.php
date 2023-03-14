@@ -13,6 +13,7 @@
                         <th>Id</th>
                         <th>Логин</th>
                         <th>Роль</th>
+                        <th>Статус</th>
                         <th>Дата создания</th>
                         <th>Действия</th>
                     </tr>
@@ -23,6 +24,7 @@
                             <td> {{ $user->id }}</td>
                             <td> <a href="{{ route('d.user.show', $user->id) }}"> {{ $user->login }} </a></td>
                             <td> {{ $user->userRole() }}</td>
+                            <td> {{ $user->is_disabled ? 'Заблокирован' : 'Активен' }}</td>
                             <td> {{ $user->created_at }}</td>
                             <td>
                                 @if (Route::has('d.user.edit'))
@@ -32,7 +34,7 @@
                                     <form action="{{ route('d.user.delete', $user->id) }}" method="post" class="inline-block ma-0">
                                         @csrf
                                         @method('delete')
-                                        <button type="submit" class="button primary icon small solid fa-trash"> Удалить {{ $user->id }}</button>
+                                        <button type="submit" class="button primary icon small solid fa-trash"> Удалить </button>
                                     </form>
                                 @endif
                             </td>
